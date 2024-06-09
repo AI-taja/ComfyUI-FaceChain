@@ -96,9 +96,9 @@ try:
     import platform
 
     log("### : Check dependencies")
-    if "python_embed" in sys.executable or "python_embedded" in sys.executable:
-        pip_install = [sys.executable, '-s', '-m', 'pip', 'install', '-q']
-        mim_install = [sys.executable, '-s', '-m', 'mim', 'install', '-q']
+    if "python_embed" in sys.executable or "python_embedded" not in sys.executable:
+        pip_install = [sys.executable, '-s', '-m', 'pip', 'install']
+        process_wrap(pip_install + ['mmcv==2.2.0', '-f', 'https://download.openmmlab.com/mmcv/dist/cu118/torch2.2/index.html'], cwd=root_path)
     else:
         pip_install = [sys.executable, '-m', 'pip', 'install', '-q']
         mim_install = [sys.executable, '-m', 'mim', 'install', '-q']
