@@ -101,7 +101,9 @@ try:
         process_wrap(pip_install + ['pip install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.2/index.html
 '], cwd=root_path)
     else:
-        pip_install = [sys.executable, '-m', 'pip', 'install', '-q']
+        pip_install = [sys.executable, '-s', '-m', 'pip', 'install']
+        process_wrap(pip_install + ['pip install mmcv==2.2.0 -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.2/index.html
+'], cwd=root_path)
         mim_install = [sys.executable, '-m', 'mim', 'install', '-q']
 
     subpack_req = os.path.join(root_path, "requirements.txt")
